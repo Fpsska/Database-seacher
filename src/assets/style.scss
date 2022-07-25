@@ -1,0 +1,46 @@
+*,
+*:before,
+*::after {
+    box-sizing: border-box;
+}
+
+ul,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+input {
+    outline: none;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: #ffff;
+    position: relative;
+    color: #5e6076;
+    font-family: Ubuntu, sans-serif;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+// /.NULLSTYLES
