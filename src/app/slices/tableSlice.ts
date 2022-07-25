@@ -1,9 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { ItableData } from '../../Types/tableSliceTypes';
 
 interface tableSliceTypes {
-    tableData: ItableData[]
+    tableData: ItableData[],
+    filterConditionOpt: string,
+    filterColumnOpt: string
 }
 
 const initialState: tableSliceTypes = {
@@ -78,15 +80,27 @@ const initialState: tableSliceTypes = {
             count: 450,
             distance: 200
         }
-    ]
+    ],
+    filterConditionOpt: 'contain',
+    filterColumnOpt: 'name'
 };
 
 const tableSlice = createSlice({
     name: 'tableSlice',
     initialState,
-    reducers: {}
+    reducers: {
+        setFilterConditionOpt(state, actions: PayloadAction<string>) {
+            state.filterConditionOpt = actions.payload;
+        },
+        setFilterColumnOpt(state, actions: PayloadAction<string>) {
+            state.filterColumnOpt = actions.payload;
+        }
+    }
 });
 
-export const { } = tableSlice.actions;
+export const {
+    setFilterConditionOpt,
+    setFilterColumnOpt
+} = tableSlice.actions;
 
 export default tableSlice.reducer;

@@ -1,6 +1,7 @@
 .filter-form {
     &__wrapper {
         display: flex;
+        padding: 2.5px;
         :not(:last-child) {
             margin: 0 20px 0 0;
         }

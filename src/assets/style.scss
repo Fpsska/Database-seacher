@@ -55,3 +55,10 @@ body {
 .App {
     height: 100%;
 }
+
+.page {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+}

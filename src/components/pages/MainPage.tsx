@@ -5,10 +5,12 @@ import Filter from '../Filter/Filter';
 
 const MainPage: React.FC = () => {
     return (
-        <>
-            <Filter />
-            <Table />
-        </>
+        <div className="page">
+            <div className="page__wrapper">
+                <Filter />
+                <Table />
+            </div>
+        </div>
     );
 };
 
