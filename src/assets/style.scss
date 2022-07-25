@@ -23,6 +23,11 @@ input {
     cursor: pointer;
 }
 
+select {
+    cursor: pointer;
+    outline: none;
+}
+
 a {
     text-decoration: none;
     cursor: pointer;
@@ -38,9 +43,15 @@ body {
     position: relative;
     color: #5e6076;
     font-family: Ubuntu, sans-serif;
+    height: 100vh;
     font-size: 14px;
     padding: 0;
     margin: 0;
 }
 
 // /.NULLSTYLES
+
+#root,
+.App {
+    height: 100%;
+}

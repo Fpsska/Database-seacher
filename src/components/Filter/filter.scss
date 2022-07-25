@@ -1,0 +1,12 @@
+.filter-form {
+    &__wrapper {
+        display: flex;
+        :not(:last-child) {
+            margin: 0 20px 0 0;
+        }
+    }
+}
+
+.input {
+    padding: 2px 4px;
+}

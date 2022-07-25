@@ -6,7 +6,6 @@ import { ItableData } from '../../Types/tableSliceTypes';
 
 import TableTemplate from './TableTemplate';
 
-
 import './table.scss';
 
 const Table: React.FC = () => {
