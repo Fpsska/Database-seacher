@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../app/hooks';
 import { switchTHActiveStatus } from '../../app/slices/tableSlice';
 
 interface propTypes {
-    id: number,
+    id: string,
     text: string,
     isActive: boolean
 }

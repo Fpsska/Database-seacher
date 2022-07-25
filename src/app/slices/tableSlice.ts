@@ -84,22 +84,22 @@ const initialState: tableSliceTypes = {
     ],
     tableHeadData: [
         {
-            id: 1,
+            id: 'date',
             text: 'Date',
             isActive: false
         },
         {
-            id: 2,
+            id: 'name',
             text: 'Name',
             isActive: false
         },
         {
-            id: 3,
+            id: 'count',
             text: 'Count (pc)',
             isActive: false
         },
         {
-            id: 4,
+            id: 'distance',
             text: 'Distance (m)',
             isActive: false
         }
@@ -118,7 +118,7 @@ const tableSlice = createSlice({
         setFilterColumnOpt(state, actions: PayloadAction<string>) {
             state.filterColumnOpt = actions.payload;
         },
-        switchTHActiveStatus(state, action: PayloadAction<{ id: number, status: boolean }>) {
+        switchTHActiveStatus(state, action: PayloadAction<{ id: string, status: boolean }>) {
             const { id, status } = action.payload;
             state.tableHeadData.forEach(item => item.id === id ? item.isActive = status : item.isActive = false);
         }

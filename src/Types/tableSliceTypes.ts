@@ -7,7 +7,7 @@ export interface ItableData {
 }
 
 export interface ItableHead {
-    id: number,
+    id: string,
     text: string,
     isActive: boolean
 }
