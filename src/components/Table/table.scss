@@ -4,6 +4,10 @@ th {
     padding: 0.5rem 1rem;
 }
 
+th {
+    cursor: pointer;
+}
+
 tbody tr {
     background-color: #ccc;
 }
@@ -11,4 +15,8 @@ tbody tr {
 th {
     background: #444;
     color: #fff;
+}
+
+.table__th.active {
+    color: green;
 }

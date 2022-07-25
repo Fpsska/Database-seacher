@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { ItableData } from '../../Types/tableSliceTypes';
+import { ItableData, ItableHead } from '../../Types/tableSliceTypes';
 
 interface tableSliceTypes {
     tableData: ItableData[],
+    tableHeadData: ItableHead[],
     filterConditionOpt: string,
     filterColumnOpt: string
 }
@@ -81,6 +82,28 @@ const initialState: tableSliceTypes = {
             distance: 200
         }
     ],
+    tableHeadData: [
+        {
+            id: 1,
+            text: 'Date',
+            isActive: false
+        },
+        {
+            id: 2,
+            text: 'Name',
+            isActive: false
+        },
+        {
+            id: 3,
+            text: 'Count (pc)',
+            isActive: false
+        },
+        {
+            id: 4,
+            text: 'Distance (m)',
+            isActive: false
+        }
+    ],
     filterConditionOpt: 'contain',
     filterColumnOpt: 'name'
 };
@@ -94,13 +117,18 @@ const tableSlice = createSlice({
         },
         setFilterColumnOpt(state, actions: PayloadAction<string>) {
             state.filterColumnOpt = actions.payload;
+        },
+        switchTHActiveStatus(state, action: PayloadAction<{ id: number, status: boolean }>) {
+            const { id, status } = action.payload;
+            state.tableHeadData.forEach(item => item.id === id ? item.isActive = status : item.isActive = false);
         }
     }
 });
 
 export const {
     setFilterConditionOpt,
-    setFilterColumnOpt
+    setFilterColumnOpt,
+    switchTHActiveStatus
 } = tableSlice.actions;
 
 export default tableSlice.reducer;

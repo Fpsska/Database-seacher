@@ -5,3 +5,9 @@ export interface ItableData {
     count: number
     distance: number
 }
+
+export interface ItableHead {
+    id: number,
+    text: string,
+    isActive: boolean
+}
