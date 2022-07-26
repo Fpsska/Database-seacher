@@ -14,72 +14,72 @@ const initialState: tableSliceTypes = {
         {
             id: 1,
             date: '12.12.12',
-            name: 'item #1',
-            count: 420,
+            name: 'AAA',
+            count: 500,
             distance: 100
         },
         {
             id: 2,
-            name: 'item #2',
             date: '13.11.13',
-            count: 450,
+            name: 'BBB',
+            count: 490,
             distance: 200
         },
         {
             id: 3,
             date: '12.12.12',
-            name: 'item #1',
-            count: 420,
-            distance: 100
+            name: 'CCC',
+            count: 480,
+            distance: 300
         },
         {
             id: 4,
-            name: 'item #2',
             date: '13.11.13',
-            count: 450,
-            distance: 200
+            name: 'DDD',
+            count: 470,
+            distance: 400
         },
         {
             id: 5,
             date: '12.12.12',
-            name: 'item #1',
-            count: 420,
-            distance: 100
+            name: 'EEE',
+            count: 460,
+            distance: 500
         },
         {
             id: 6,
-            name: 'item #2',
             date: '13.11.13',
+            name: 'FFF',
             count: 450,
-            distance: 200
+            distance: 600
         },
         {
             id: 7,
             date: '12.12.12',
-            name: 'item #1',
-            count: 420,
-            distance: 100
+            name: 'GGG',
+            count: 440,
+            distance: 700
         },
         {
             id: 8,
-            name: 'item #2',
             date: '13.11.13',
-            count: 450,
-            distance: 200
+            name: 'HHH',
+            count: 430,
+            distance: 800
         },
         {
             id: 9,
             date: '12.12.12',
-            name: 'item #1',
+            name: 'III',
             count: 420,
-            distance: 100
+            distance: 900
         },
         {
             id: 10,
-            name: 'item #2',
             date: '13.11.13',
-            count: 450,
-            distance: 200
+            name: 'JJJ',
+            count: 410,
+            distance: 1000
         }
     ],
     tableHeadData: [
@@ -104,7 +104,7 @@ const initialState: tableSliceTypes = {
             isActive: false
         }
     ],
-    filterConditionOpt: 'contain',
+    filterConditionOpt: 'less',
     filterColumnOpt: 'name'
 };
 
@@ -112,15 +112,27 @@ const tableSlice = createSlice({
     name: 'tableSlice',
     initialState,
     reducers: {
-        setFilterConditionOpt(state, actions: PayloadAction<string>) {
-            state.filterConditionOpt = actions.payload;
+        setFilterConditionOpt(state, action: PayloadAction<string>) {
+            state.filterConditionOpt = action.payload;
         },
-        setFilterColumnOpt(state, actions: PayloadAction<string>) {
-            state.filterColumnOpt = actions.payload;
+        setFilterColumnOpt(state, action: PayloadAction<string>) {
+            state.filterColumnOpt = action.payload;
         },
         switchTHActiveStatus(state, action: PayloadAction<{ id: string, status: boolean }>) {
             const { id, status } = action.payload;
             state.tableHeadData.forEach(item => item.id === id ? item.isActive = status : item.isActive = false);
+        },
+        sortDataBy(state, action: PayloadAction<any>) {
+            const { filterColumnOpt, filterConditionOpt } = action.payload;
+
+            switch (filterColumnOpt && filterConditionOpt) {
+                case 'name': case 'more':
+                    state.tableData = state.tableData.sort((a, b) => a.name > b.name ? 1 : -1);
+                    break;
+                case 'name': case 'less':
+                    state.tableData = state.tableData.sort((a, b) => a.name < b.name ? 1 : -1);
+                    break;
+            }
         }
     }
 });
@@ -128,7 +140,8 @@ const tableSlice = createSlice({
 export const {
     setFilterConditionOpt,
     setFilterColumnOpt,
-    switchTHActiveStatus
+    switchTHActiveStatus,
+    sortDataBy
 } = tableSlice.actions;
 
 export default tableSlice.reducer;

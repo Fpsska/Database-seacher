@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import {
   setFilterConditionOpt,
@@ -11,6 +11,8 @@ import {
 import './filter.scss';
 
 const Filter: React.FC = () => {
+
+  const {filterConditionOpt, filterColumnOpt } = useAppSelector(state => state.tableSlice);
 
   const dispatch = useAppDispatch();
 
@@ -27,13 +29,13 @@ const Filter: React.FC = () => {
     <form className="filter-form">
       <div className="filter-form__wrapper">
 
-        <select className="select select--column" defaultValue={'name'} onChange={e => handleSelectColumn(e.target.value)}>
+        <select className="select select--column" value={filterColumnOpt} onChange={e => handleSelectColumn(e.target.value)}>
           <option value="name">name</option>
           <option value="count">count</option>
           <option value="distance">distance</option>
         </select>
 
-        <select className="select select--condition" defaultValue={'contain'} onChange={e => handleSelectCondition(e.target.value)}>
+        <select className="select select--condition" defaultValue={filterConditionOpt} onChange={e => handleSelectCondition(e.target.value)}>
           <option value="equal">equal</option>
           <option value="contain">contain</option>
           <option value="more">more</option>

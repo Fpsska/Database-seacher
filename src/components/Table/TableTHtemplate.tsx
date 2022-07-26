@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useAppDispatch } from '../../app/hooks';
 
-import { switchTHActiveStatus } from '../../app/slices/tableSlice';
+import { switchTHActiveStatus, setFilterColumnOpt } from '../../app/slices/tableSlice';
 
 interface propTypes {
     id: string,
@@ -18,10 +18,11 @@ const TableTHtemplate: React.FC<propTypes> = (props) => {
 
     const handleTHstatus = (): void => {
         dispatch(switchTHActiveStatus({ id, status: true }));
+        dispatch(setFilterColumnOpt(id));
     };
 
     return (
-        <th className={isActive ? 'table__th active' : 'table__th'} onClick={handleTHstatus}>{text}</th>
+        <th className={isActive ? 'table__th active' : 'table__th'} onClick={() => id !== 'date' && handleTHstatus()}>{text}</th>
     );
 };
 
