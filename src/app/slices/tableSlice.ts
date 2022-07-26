@@ -214,32 +214,38 @@ const tableSlice = createSlice({
 
             switch (filterColumnOpt) {
                 case 'name':
-                    if (filterConditionOpt === 'more') { // MORE(ASC) 1..10 
-                        state.tableData = state.tableData.sort((a, b) => a.name > b.name ? 1 : -1);
+                    if (filterConditionOpt === 'more') { // MORE (ASC) 1..10 
+                        state.tableData = state.filteredTableData.sort((a, b) => a.name > b.name ? 1 : -1);
                     }
-                    if (filterConditionOpt === 'less') { // LESS(DSC) 10..1
-                        state.tableData = state.tableData.sort((a, b) => a.name < b.name ? 1 : -1);
+                    if (filterConditionOpt === 'less') { // LESS (DSC) 10..1
+                        state.tableData = state.filteredTableData.sort((a, b) => a.name < b.name ? 1 : -1);
                     }
-                    if (filterConditionOpt === 'contain') { // EMPTY in bottom 
-                        state.tableData = state.tableData.sort((a, b) => !a.name ? 1 : !b.name ? -1 : 0);
+                    if (filterConditionOpt === 'contain') { // show el, whose name field not empty
+                        state.tableData = state.filteredTableData.filter(item => item.name);
                     }
                     break;
 
                 case 'count':
                     if (filterConditionOpt === 'more') {
-                        state.tableData = state.tableData.sort((a, b) => a.count - b.count);
+                        state.tableData = state.filteredTableData.sort((a, b) => a.count - b.count);
                     }
                     if (filterConditionOpt === 'less') {
-                        state.tableData = state.tableData.sort((a, b) => b.count - a.count);
+                        state.tableData = state.filteredTableData.sort((a, b) => b.count - a.count);
+                    }
+                    if (filterConditionOpt === 'contain') {
+                        state.tableData = state.filteredTableData.filter(item => item.count);
                     }
                     break;
 
                 case 'distance':
                     if (filterConditionOpt === 'more') {
-                        state.tableData = state.tableData.sort((a, b) => a.distance - b.distance);
+                        state.tableData = state.filteredTableData.sort((a, b) => a.distance - b.distance);
                     }
-                    else if (filterConditionOpt === 'less') {
-                        state.tableData = state.tableData.sort((a, b) => b.distance - a.distance);
+                    if (filterConditionOpt === 'less') {
+                        state.tableData = state.filteredTableData.sort((a, b) => b.distance - a.distance);
+                    }
+                    if (filterConditionOpt === 'contain') {
+                        state.tableData = state.filteredTableData.filter(item => item.distance);
                     }
                     break;
             }
