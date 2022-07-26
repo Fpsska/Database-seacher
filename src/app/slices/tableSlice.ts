@@ -80,6 +80,13 @@ const initialState: tableSliceTypes = {
             name: 'JJJ',
             count: 470,
             distance: 600
+        },
+        {
+            id: 11,
+            date: '13.11.13',
+            name: '',
+            count: 470,
+            distance: 600
         }
     ],
     tableHeadData: [
@@ -133,6 +140,9 @@ const tableSlice = createSlice({
                     if (filterConditionOpt === 'less') { // LESS(DSC) 10..1
                         state.tableData = state.tableData.sort((a, b) => a.name < b.name ? 1 : -1);
                     }
+                    if (filterConditionOpt === 'contain') { // EMPTY in bottom 
+                        state.tableData = state.tableData.sort((a, b) => a.name < b.name ? 1 : -1);
+                    }
                     break;
 
                 case 'count':
@@ -148,7 +158,7 @@ const tableSlice = createSlice({
                     if (filterConditionOpt === 'more') {
                         state.tableData = state.tableData.sort((a, b) => a.distance - b.distance);
                     }
-                    if (filterConditionOpt === 'less') {
+                    else if (filterConditionOpt === 'less') {
                         state.tableData = state.tableData.sort((a, b) => b.distance - a.distance);
                     }
                     break;

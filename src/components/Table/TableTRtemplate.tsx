@@ -9,12 +9,7 @@ interface propTypes {
 
 const TableTRtemplate: React.FC<propTypes> = (props) => {
 
-    const {
-        date,
-        name,
-        count,
-        distance
-    } = props;
+    const { date, name, count, distance } = props;
 
     return (
         <tr className="table__tr">

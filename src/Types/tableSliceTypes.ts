@@ -2,7 +2,7 @@ export interface ItableData {
     id: number,
     date: string,
     name: string,
-    count: number
+    count: number,
     distance: number
 }
 
