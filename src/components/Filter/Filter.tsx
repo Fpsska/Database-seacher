@@ -22,6 +22,7 @@ const Filter: React.FC = () => {
 
   const handleSelectCondition = (eventValue: string): void => {
     dispatch(setFilterConditionOpt(eventValue));
+    dispatch(switchTHActiveStatus({ id: filterColumnOpt, status: true }));
     defineCaseAction(filterColumnOpt, filterConditionOpt);
   };
 
