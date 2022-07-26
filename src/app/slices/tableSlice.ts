@@ -141,7 +141,7 @@ const tableSlice = createSlice({
                         state.tableData = state.tableData.sort((a, b) => a.name < b.name ? 1 : -1);
                     }
                     if (filterConditionOpt === 'contain') { // EMPTY in bottom 
-                        state.tableData = state.tableData.sort((a, b) => a.name < b.name ? 1 : -1);
+                        state.tableData = state.tableData.sort((a, b) => !a.name ? 1 : !b.name ? -1 : 0);
                     }
                     break;
 
