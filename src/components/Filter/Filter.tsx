@@ -25,14 +25,15 @@ const Filter: React.FC = () => {
 
   const handleSelectCondition = (eventValue: string): void => {
     dispatch(setFilterConditionOpt(eventValue));
-    dispatch(switchTHActiveStatus({ id: filterColumnOpt, status: true }));
+    dispatch(switchTHActiveStatus({ id: filterColumnOpt, status: true })); // set initially active class for current filtering field
     defineCaseAction(filterColumnOpt, filterConditionOpt);
   };
 
   const handleSelectColumn = (eventValue: string): void => {
     dispatch(setFilterColumnOpt(eventValue));
     dispatch(switchTHActiveStatus({ id: eventValue, status: true }));
-    inputHandler('', '');
+    defineCaseAction(eventValue, filterConditionOpt);
+    inputHandler('', ''); // clear input when change current filterConditionOpt
   };
 
   const inputHandler = (value: string, name: string): void => {

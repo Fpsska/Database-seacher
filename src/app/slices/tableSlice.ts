@@ -30,13 +30,13 @@ const initialState: tableSliceTypes = {
             id: 3,
             date: '12.12.12',
             name: 'CCC',
-            count: 450,
+            count: 420,
             distance: 100
         },
         {
             id: 4,
             date: '13.11.13',
-            name: 'DDD',
+            name: 'CCC',
             count: 440,
             distance: 800
         },
@@ -45,7 +45,7 @@ const initialState: tableSliceTypes = {
             date: '12.12.12',
             name: 'EEE',
             count: 410,
-            distance: 400
+            distance: 800
         },
         {
             id: 6,
@@ -244,7 +244,7 @@ const tableSlice = createSlice({
                     break;
             }
         },
-        filterData(state, action: PayloadAction<any>) {
+        filterData(state, action: PayloadAction<{ name: string, value: string }>) {
             const { name, value } = action.payload;
 
             switch (name) {
