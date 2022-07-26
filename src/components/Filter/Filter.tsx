@@ -5,7 +5,8 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
   setFilterConditionOpt,
   setFilterColumnOpt,
-  switchTHActiveStatus
+  switchTHActiveStatus,
+  filterData
 } from '../../app/slices/tableSlice';
 
 import { useCaseAction } from '../../hooks/useCaseAction';
@@ -31,17 +32,23 @@ const Filter: React.FC = () => {
   const handleSelectColumn = (eventValue: string): void => {
     dispatch(setFilterColumnOpt(eventValue));
     dispatch(switchTHActiveStatus({ id: eventValue, status: true }));
-    inputHandler('', ''); 
+    inputHandler('', '');
   };
 
   const inputHandler = (value: string, name: string): void => {
     switch (name) {
       case 'name':
-        return setInputValue(value.replace(/[^a-zA-Z\s]/g, ''));
+        setInputValue(value.replace(/[^a-zA-Z\s]/g, ''));
+        dispatch(filterData({ name: 'name', value: value.trim() }));
+        break;
       case 'count':
-        return setInputValue(value.replace(/[^0-9]/g, ''));
+        setInputValue(value.replace(/[^0-9]/g, ''));
+        dispatch(filterData({ name: 'count', value: value.trim() }));
+        break;
       case 'distance':
-        return setInputValue(value.replace(/[^0-9]/g, ''));
+        setInputValue(value.replace(/[^0-9]/g, ''));
+        dispatch(filterData({ name: 'distance', value: value.trim() }));
+        break;
       default:
         return setInputValue('');
     }

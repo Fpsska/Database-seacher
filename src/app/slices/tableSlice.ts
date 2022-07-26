@@ -4,6 +4,7 @@ import { ItableData, ItableHead } from '../../Types/tableSliceTypes';
 
 interface tableSliceTypes {
     tableData: ItableData[],
+    filteredTableData: ItableData[],
     tableHeadData: ItableHead[],
     filterConditionOpt: string,
     filterColumnOpt: string
@@ -11,6 +12,85 @@ interface tableSliceTypes {
 
 const initialState: tableSliceTypes = {
     tableData: [
+        {
+            id: 1,
+            date: '12.12.12',
+            name: 'AAA',
+            count: 500,
+            distance: 200
+        },
+        {
+            id: 2,
+            date: '13.11.13',
+            name: 'BBB',
+            count: 420,
+            distance: 500
+        },
+        {
+            id: 3,
+            date: '12.12.12',
+            name: 'CCC',
+            count: 450,
+            distance: 100
+        },
+        {
+            id: 4,
+            date: '13.11.13',
+            name: 'DDD',
+            count: 440,
+            distance: 800
+        },
+        {
+            id: 5,
+            date: '12.12.12',
+            name: 'EEE',
+            count: 410,
+            distance: 400
+        },
+        {
+            id: 6,
+            date: '13.11.13',
+            name: 'FFF',
+            count: 400,
+            distance: 300
+        },
+        {
+            id: 7,
+            date: '12.12.12',
+            name: 'GGG',
+            count: 490,
+            distance: 700
+        },
+        {
+            id: 8,
+            date: '13.11.13',
+            name: 'HHH',
+            count: 430,
+            distance: 1000
+        },
+        {
+            id: 9,
+            date: '12.12.12',
+            name: 'III',
+            count: 460,
+            distance: 900
+        },
+        {
+            id: 10,
+            date: '13.11.13',
+            name: 'JJJ',
+            count: 470,
+            distance: 600
+        },
+        {
+            id: 11,
+            date: '13.11.13',
+            name: '',
+            count: 470,
+            distance: 600
+        }
+    ],
+    filteredTableData: [
         {
             id: 1,
             date: '12.12.12',
@@ -163,6 +243,21 @@ const tableSlice = createSlice({
                     }
                     break;
             }
+        },
+        filterData(state, action: PayloadAction<any>) {
+            const { name, value } = action.payload;
+
+            switch (name) {
+                case 'name':
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'gi').test(item.name));
+                    break;
+                case 'count':
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(String(item.count)));
+                    break;
+                case 'distance':
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(String(item.distance)));
+                    break;
+            }
         }
     }
 });
@@ -171,7 +266,8 @@ export const {
     setFilterConditionOpt,
     setFilterColumnOpt,
     switchTHActiveStatus,
-    sortData
+    sortData,
+    filterData
 } = tableSlice.actions;
 
 export default tableSlice.reducer;
