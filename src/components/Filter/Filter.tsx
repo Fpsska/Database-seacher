@@ -8,16 +8,21 @@ import {
   switchTHActiveStatus
 } from '../../app/slices/tableSlice';
 
+import { useCaseAction } from '../../hooks/useCaseAction';
+
 import './filter.scss';
 
 const Filter: React.FC = () => {
 
-  const {filterConditionOpt, filterColumnOpt } = useAppSelector(state => state.tableSlice);
+  const { filterConditionOpt, filterColumnOpt } = useAppSelector(state => state.tableSlice);
+
+  const defineCaseAction = useCaseAction();
 
   const dispatch = useAppDispatch();
 
   const handleSelectCondition = (eventValue: string): void => {
     dispatch(setFilterConditionOpt(eventValue));
+    defineCaseAction(filterColumnOpt, filterConditionOpt);
   };
 
   const handleSelectColumn = (eventValue: string): void => {
