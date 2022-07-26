@@ -26,7 +26,7 @@ const Filter: React.FC = () => {
   const handleSelectCondition = (eventValue: string): void => {
     dispatch(setFilterConditionOpt(eventValue));
     dispatch(switchTHActiveStatus({ id: filterColumnOpt, status: true })); // set initially active class for current filtering field
-    defineCaseAction(filterColumnOpt, filterConditionOpt);
+    defineCaseAction(filterColumnOpt, eventValue);
   };
 
   const handleSelectColumn = (eventValue: string): void => {

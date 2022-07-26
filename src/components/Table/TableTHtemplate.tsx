@@ -25,7 +25,6 @@ const TableTHtemplate: React.FC<propTypes> = (props) => {
         dispatch(switchTHActiveStatus({ id, status: true }));
         dispatch(setFilterColumnOpt(id));
         defineCaseAction(id, filterConditionOpt);
-        console.log(id)
     };
 
     return (
