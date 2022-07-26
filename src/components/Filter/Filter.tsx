@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
@@ -16,6 +16,8 @@ const Filter: React.FC = () => {
 
   const { filterConditionOpt, filterColumnOpt } = useAppSelector(state => state.tableSlice);
 
+  const [inputValue, setInputValue] = useState<string>('');
+
   const defineCaseAction = useCaseAction();
 
   const dispatch = useAppDispatch();
@@ -29,6 +31,20 @@ const Filter: React.FC = () => {
   const handleSelectColumn = (eventValue: string): void => {
     dispatch(setFilterColumnOpt(eventValue));
     dispatch(switchTHActiveStatus({ id: eventValue, status: true }));
+    inputHandler('', ''); 
+  };
+
+  const inputHandler = (value: string, name: string): void => {
+    switch (name) {
+      case 'name':
+        return setInputValue(value.replace(/[^a-zA-Z\s]/g, ''));
+      case 'count':
+        return setInputValue(value.replace(/[^0-9]/g, ''));
+      case 'distance':
+        return setInputValue(value.replace(/[^0-9]/g, ''));
+      default:
+        return setInputValue('');
+    }
   };
 
   return (
@@ -48,7 +64,13 @@ const Filter: React.FC = () => {
           <option value="less">less</option>
         </select>
 
-        <input className="input" type="text" placeholder="write there" />
+        <input
+          className="input"
+          type="text"
+          placeholder="write there"
+          onChange={e => inputHandler(e.target.value, filterColumnOpt)}
+          value={inputValue}
+        />
 
       </div>
     </form>
