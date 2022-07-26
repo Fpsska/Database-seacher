@@ -11,7 +11,7 @@ import './table.scss';
 
 const Table: React.FC = () => {
 
-    const { tableData, tableHeadData } = useAppSelector(state => state.tableSlice);
+    const { tableData, tableHeadData, filterConditionOpt } = useAppSelector(state => state.tableSlice);
 
     return (
         <table className="table">
@@ -24,6 +24,7 @@ const Table: React.FC = () => {
                                 id={item.id}
                                 text={item.text}
                                 isActive={item.isActive}
+                                filterConditionOpt={filterConditionOpt}
                             />
                         );
                     })}
