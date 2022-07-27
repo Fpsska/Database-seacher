@@ -6,10 +6,19 @@ import { getDublocateItems } from '../../helpers/getDublicateItems';
 
 export const fetchTableData = createAsyncThunk(
     'tableSlice/fetchTableData',
-    async () => {
-        const response = await fetch('http://localhost:8080/api/data');
-        const data = await response.json();
-        return data;
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await fetch('http://localhost:8080/api/data');
+
+            if (!response.ok) {
+                throw new Error('Error from response');
+            }
+
+            const data = await response.json();
+            return data;
+        } catch (err: any) {
+            return rejectWithValue(err.message); // send to case rejected.type of extreReducers 
+        }
     }
 );
 
@@ -20,7 +29,8 @@ interface tableSliceTypes {
     filterConditionOpt: string,
     filterColumnOpt: string,
     isDataLoading: boolean,
-    status: string
+    status: string,
+    error: string
 }
 
 const initialState: tableSliceTypes = {
@@ -51,7 +61,8 @@ const initialState: tableSliceTypes = {
     filterConditionOpt: 'less',
     filterColumnOpt: 'name',
     isDataLoading: true,
-    status: ''
+    status: '',
+    error: ''
 };
 
 const tableSlice = createSlice({
@@ -147,8 +158,9 @@ const tableSlice = createSlice({
             state.filteredTableData = action.payload;
             state.status = 'success';
         },
-        [fetchTableData.rejected.type]: (state) => {
+        [fetchTableData.rejected.type]: (state, action: PayloadAction<string>) => {
             state.status = 'failed';
+            state.error = action.payload;
         }
     }
 });

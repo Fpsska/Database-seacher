@@ -11,27 +11,31 @@ interface propTypes {
     text: string,
     isActive: boolean,
     filterConditionOpt: string,
-    isDataLoading: boolean
+    isDataLoading: boolean,
+    error: string
 }
 
 const TableTHtemplate: React.FC<propTypes> = (props) => {
 
-    const { id, text, isActive, filterConditionOpt, isDataLoading } = props;
+    const { id, text, isActive, filterConditionOpt, isDataLoading, error } = props;
 
     const defineCaseAction = useCaseAction();
 
     const dispatch = useAppDispatch();
 
     const handleTHcell = (): void => {
-        dispatch(switchTHActiveStatus({ id, status: true }));
-        dispatch(setFilterColumnOpt(id));
-        defineCaseAction(id, filterConditionOpt);
+        if (id !== 'date' && !isDataLoading && !error) {
+            dispatch(switchTHActiveStatus({ id, status: true }));
+            dispatch(setFilterColumnOpt(id));
+            defineCaseAction(id, filterConditionOpt);
+        }
     };
 
     return (
         <th
             className={isActive ? 'table__th active' : 'table__th'}
-            onClick={() => (id !== 'date' && !isDataLoading) && handleTHcell()}>
+            onClick={handleTHcell}
+        >
             {text}
         </th>
     );

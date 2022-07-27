@@ -11,7 +11,7 @@ import './table.scss';
 
 const Table: React.FC = () => {
 
-    const { tableData, tableHeadData, filterConditionOpt, isDataLoading } = useAppSelector(state => state.tableSlice);
+    const { tableData, tableHeadData, filterConditionOpt, isDataLoading, error } = useAppSelector(state => state.tableSlice);
     const { currentPage, itemsPerPage } = useAppSelector(state => state.navSlice);
 
     const [empty, setEmpty] = useState<boolean>(false);
@@ -37,28 +37,33 @@ const Table: React.FC = () => {
                                 isActive={item.isActive}
                                 filterConditionOpt={filterConditionOpt}
                                 isDataLoading={isDataLoading}
+                                error={error}
                             />
                         );
                     })}
                 </tr>
             </thead>
             <tbody className={empty ? 'table__body empty' : 'table__body'}>
-                {empty ?
-                    <h1 className="message">no matches</h1>
-                    :
-                    <>
-                        {visibleEl.map((item: ItableData) => {
-                            return (
-                                <TableTRtemplate
-                                    key={item.id}
-                                    date={item.date}
-                                    name={item.name}
-                                    count={item.count}
-                                    distance={item.distance}
-                                />
-                            );
-                        })}
-                    </>
+                {
+                    !isDataLoading && error ?
+                        <h1 className="message message--error">{`Error: ${error}`}</h1>
+                        :
+                        !error && !isDataLoading && empty ?
+                            <h1 className="message">no matches</h1>
+                            :
+                            <>
+                                {visibleEl.map((item: ItableData) => {
+                                    return (
+                                        <TableTRtemplate
+                                            key={item.id}
+                                            date={item.date}
+                                            name={item.name}
+                                            count={item.count}
+                                            distance={item.distance}
+                                        />
+                                    );
+                                })}
+                            </>
                 }
             </tbody>
         </table>

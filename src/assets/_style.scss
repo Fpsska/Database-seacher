@@ -93,6 +93,11 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.message--error {
+    @extend .message;
+    color: rgba($color: red, $alpha: 0.35)
+}
+
 .page-preloader {
     z-index: 2;
     width: 100%;

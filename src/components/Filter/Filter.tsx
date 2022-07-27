@@ -15,7 +15,7 @@ import './filter.scss';
 
 const Filter: React.FC = () => {
 
-  const { filterConditionOpt, filterColumnOpt, isDataLoading } = useAppSelector(state => state.tableSlice);
+  const { filterConditionOpt, filterColumnOpt, isDataLoading, error } = useAppSelector(state => state.tableSlice);
 
   const [inputValue, setInputValue] = useState<string>('');
 
@@ -63,7 +63,7 @@ const Filter: React.FC = () => {
           className="select select--column"
           value={filterColumnOpt}
           onChange={e => handleSelectColumn(e.target.value)}
-          disabled={isDataLoading}
+          disabled={isDataLoading || !!error}
         >
           <option value="name">name</option>
           <option value="count">count</option>
@@ -74,7 +74,7 @@ const Filter: React.FC = () => {
           className="select select--condition"
           defaultValue={filterConditionOpt}
           onChange={e => handleSelectCondition(e.target.value)}
-          disabled={isDataLoading}
+          disabled={isDataLoading || !!error}
         >
           <option value="equal">equal</option>
           <option value="contain">contain</option>
@@ -88,7 +88,7 @@ const Filter: React.FC = () => {
           placeholder="write there"
           onChange={e => inputHandler(e.target.value, filterColumnOpt)}
           value={inputValue}
-          disabled={isDataLoading}
+          disabled={isDataLoading || !!error}
         />
 
       </div>

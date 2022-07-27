@@ -15,7 +15,7 @@ import Preloader from './Preloader/Preloader';
 const Layout: React.FC = () => {
 
     const { currentPage, itemsPerPage } = useAppSelector(state => state.navSlice);
-    const { isDataLoading, tableData } = useAppSelector(state => state.tableSlice);
+    const { isDataLoading, tableData} = useAppSelector(state => state.tableSlice);
 
     const dispatch = useAppDispatch();
 
