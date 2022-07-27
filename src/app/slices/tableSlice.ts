@@ -1,10 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
 
 import { ItableData, ItableHead } from '../../Types/tableSliceTypes';
 
+import { getDublocateItems } from '../../helpers/getDublicateItems';
+
 interface tableSliceTypes {
-    tableData: ItableData[],
-    filteredTableData: ItableData[],
+    tableData: any[],
+    filteredTableData: any[],
     tableHeadData: ItableHead[],
     filterConditionOpt: string,
     filterColumnOpt: string
@@ -109,13 +111,13 @@ const initialState: tableSliceTypes = {
             id: 3,
             date: '12.12.12',
             name: 'CCC',
-            count: 450,
+            count: 420,
             distance: 100
         },
         {
             id: 4,
             date: '13.11.13',
-            name: 'DDD',
+            name: 'CCC',
             count: 440,
             distance: 800
         },
@@ -124,7 +126,7 @@ const initialState: tableSliceTypes = {
             date: '12.12.12',
             name: 'EEE',
             count: 410,
-            distance: 400
+            distance: 800
         },
         {
             id: 6,
@@ -223,6 +225,9 @@ const tableSlice = createSlice({
                     if (filterConditionOpt === 'contain') { // show el, whose name field not empty
                         state.tableData = state.filteredTableData.filter(item => item.name);
                     }
+                    if (filterConditionOpt === 'equal') {
+                        state.tableData = getDublocateItems(state.filteredTableData, 'name');
+                    }
                     break;
 
                 case 'count':
@@ -235,6 +240,9 @@ const tableSlice = createSlice({
                     if (filterConditionOpt === 'contain') {
                         state.tableData = state.filteredTableData.filter(item => item.count);
                     }
+                    if (filterConditionOpt === 'equal') {
+                        state.tableData = getDublocateItems(state.filteredTableData, 'count');
+                    }
                     break;
 
                 case 'distance':
@@ -246,6 +254,9 @@ const tableSlice = createSlice({
                     }
                     if (filterConditionOpt === 'contain') {
                         state.tableData = state.filteredTableData.filter(item => item.distance);
+                    }
+                    if (filterConditionOpt === 'equal') {
+                        state.tableData = getDublocateItems(state.filteredTableData, 'distance');
                     }
                     break;
             }
