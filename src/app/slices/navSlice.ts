@@ -7,7 +7,7 @@ interface navSliceTypes {
 
 const initialState: navSliceTypes = {
     currentPage: 1,
-    itemsPerPage: 100
+    itemsPerPage: 10 // change the value for set count of visible items on page
 };
 
 const navSlice = createSlice({

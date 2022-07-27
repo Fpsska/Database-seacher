@@ -1,8 +1,17 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
 import { ItableData, ItableHead } from '../../Types/tableSliceTypes';
 
 import { getDublocateItems } from '../../helpers/getDublicateItems';
+
+export const fetchTableData = createAsyncThunk(
+    'tableSlice/fetchTableData',
+    async () => {
+        const response = await fetch('http://localhost:8080/api/data');
+        const data = await response.json();
+        return data;
+    }
+);
 
 interface tableSliceTypes {
     tableData: ItableData[],
@@ -10,168 +19,13 @@ interface tableSliceTypes {
     tableHeadData: ItableHead[],
     filterConditionOpt: string,
     filterColumnOpt: string,
-    isDataLoading: boolean
+    isDataLoading: boolean,
+    status: string
 }
 
 const initialState: tableSliceTypes = {
-    tableData: [
-        {
-            id: 1,
-            date: '12.12.12',
-            name: 'AAA',
-            count: 500,
-            distance: 200
-        },
-        {
-            id: 2,
-            date: '13.11.13',
-            name: 'BBB',
-            count: 420,
-            distance: 500
-        },
-        {
-            id: 3,
-            date: '12.12.12',
-            name: 'CCC',
-            count: 420,
-            distance: 100
-        },
-        {
-            id: 4,
-            date: '13.11.13',
-            name: 'CCC',
-            count: 440,
-            distance: 800
-        },
-        {
-            id: 5,
-            date: '12.12.12',
-            name: 'EEE',
-            count: 410,
-            distance: 800
-        },
-        {
-            id: 6,
-            date: '13.11.13',
-            name: 'FFF',
-            count: 400,
-            distance: 300
-        },
-        {
-            id: 7,
-            date: '12.12.12',
-            name: 'GGG',
-            count: 490,
-            distance: 700
-        },
-        {
-            id: 8,
-            date: '13.11.13',
-            name: 'HHH',
-            count: 430,
-            distance: 1000
-        },
-        {
-            id: 9,
-            date: '12.12.12',
-            name: 'III',
-            count: 460,
-            distance: 900
-        },
-        {
-            id: 10,
-            date: '13.11.13',
-            name: 'JJJ',
-            count: 470,
-            distance: 600
-        },
-        {
-            id: 11,
-            date: '13.11.13',
-            name: '',
-            count: 470,
-            distance: 600
-        }
-    ],
-    filteredTableData: [
-        {
-            id: 1,
-            date: '12.12.12',
-            name: 'AAA',
-            count: 500,
-            distance: 200
-        },
-        {
-            id: 2,
-            date: '13.11.13',
-            name: 'BBB',
-            count: 420,
-            distance: 500
-        },
-        {
-            id: 3,
-            date: '12.12.12',
-            name: 'CCC',
-            count: 420,
-            distance: 100
-        },
-        {
-            id: 4,
-            date: '13.11.13',
-            name: 'CCC',
-            count: 440,
-            distance: 800
-        },
-        {
-            id: 5,
-            date: '12.12.12',
-            name: 'EEE',
-            count: 410,
-            distance: 800
-        },
-        {
-            id: 6,
-            date: '13.11.13',
-            name: 'FFF',
-            count: 400,
-            distance: 300
-        },
-        {
-            id: 7,
-            date: '12.12.12',
-            name: 'GGG',
-            count: 490,
-            distance: 700
-        },
-        {
-            id: 8,
-            date: '13.11.13',
-            name: 'HHH',
-            count: 430,
-            distance: 1000
-        },
-        {
-            id: 9,
-            date: '12.12.12',
-            name: 'III',
-            count: 460,
-            distance: 900
-        },
-        {
-            id: 10,
-            date: '13.11.13',
-            name: 'JJJ',
-            count: 470,
-            distance: 600
-        },
-        {
-            id: 11,
-            date: '13.11.13',
-            name: '',
-            count: 470,
-            distance: 600
-        }
-    ],
+    tableData: [],
+    filteredTableData: [],
     tableHeadData: [
         {
             id: 'date',
@@ -196,7 +50,8 @@ const initialState: tableSliceTypes = {
     ],
     filterConditionOpt: 'less',
     filterColumnOpt: 'name',
-    isDataLoading: true
+    isDataLoading: true,
+    status: ''
 };
 
 const tableSlice = createSlice({
@@ -280,6 +135,20 @@ const tableSlice = createSlice({
         },
         switchLoadingStatus(state, action: PayloadAction<boolean>) {
             state.isDataLoading = action.payload;
+        }
+    },
+    extraReducers: {
+        [fetchTableData.pending.type]: (state) => {
+            state.status = 'loading';
+        },
+        [fetchTableData.fulfilled.type]: (state, action: PayloadAction<ItableData[]>
+        ) => {
+            state.tableData = action.payload;
+            state.filteredTableData = action.payload;
+            state.status = 'success';
+        },
+        [fetchTableData.rejected.type]: (state) => {
+            state.status = 'failed';
         }
     }
 });
