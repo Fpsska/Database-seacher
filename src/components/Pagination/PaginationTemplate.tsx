@@ -17,7 +17,7 @@ const PaginationTemplate: React.FC<propTypes> = (props) => {
 
     const dispatch = useAppDispatch();
 
-    useEffect(() => { // define active class for nav__item el
+    useEffect(() => { // handle active class for nav__item el
         +text === currentPage ? setActive(true) : setActive(false);
     }, [text, currentPage]);
 

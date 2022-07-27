@@ -44,6 +44,7 @@ body {
     color: #5e6076;
     font-family: Ubuntu, sans-serif;
     height: 100vh;
+    // overflow: hidden;
     font-size: 14px;
     padding: 0;
     margin: 0;
@@ -56,10 +57,27 @@ body {
     height: 100%;
 }
 
+.App {
+    display: flex;
+    flex-direction: column;
+}
+
+.header,
+.footer {
+    flex: 0 0 auto;
+}
+.main {
+    height: 100%;
+    flex: 1;
+}
+
 .page {
+    height: 100%;
     &__wrapper {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
     }
 }
 
