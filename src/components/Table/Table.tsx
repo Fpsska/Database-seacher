@@ -11,7 +11,7 @@ import './table.scss';
 
 const Table: React.FC = () => {
 
-    const { tableData, tableHeadData, filterConditionOpt } = useAppSelector(state => state.tableSlice);
+    const { tableData, tableHeadData, filterConditionOpt, isDataLoading } = useAppSelector(state => state.tableSlice);
 
     const [empty, setEmpty] = useState<boolean>(false);
 
@@ -31,6 +31,7 @@ const Table: React.FC = () => {
                                 text={item.text}
                                 isActive={item.isActive}
                                 filterConditionOpt={filterConditionOpt}
+                                isDataLoading={isDataLoading}
                             />
                         );
                     })}

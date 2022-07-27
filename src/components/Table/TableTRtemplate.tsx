@@ -3,7 +3,7 @@ import React from 'react';
 interface propTypes {
     date: string,
     name: string,
-    count: number
+    count: number,
     distance: number
 }
 

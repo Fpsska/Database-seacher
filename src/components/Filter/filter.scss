@@ -10,4 +10,13 @@
 
 .input {
     padding: 2px 4px;
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+.select {
+    &:disabled {
+        cursor: not-allowed;
+    }
 }
