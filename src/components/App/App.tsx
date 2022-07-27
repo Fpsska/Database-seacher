@@ -5,7 +5,8 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from '../common/Layout';
 import MainPage from '../pages/MainPage';
 
-import '../../assets/style.scss';
+import '../../assets/_style.scss';
+import '../../assets/_media.scss';
 import './App.css';
 
 const App: React.FC = () => {

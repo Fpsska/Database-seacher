@@ -6,7 +6,9 @@ const MainPage: React.FC = () => {
     return (
         <div className="page">
             <div className="page__wrapper">
-                <Table />
+                <div className="table-wrapper">
+                    <Table />
+                </div>
             </div>
         </div>
     );

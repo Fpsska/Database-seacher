@@ -6,6 +6,29 @@ th {
 
 th {
     cursor: pointer;
+    text-align: center;
+}
+
+.table-wrapper {
+    height: calc(100vh - 28px - 38px);
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px #ccc;
+    }
+    &::-webkit-scrollbar-thumb {
+        box-shadow: inset 0 0 6px #ccc;
+    }
+    &::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+}
+
+.table {
+    width: 100%;
 }
 
 .table__body .empty {

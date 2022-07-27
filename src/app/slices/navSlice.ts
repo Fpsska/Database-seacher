@@ -7,7 +7,7 @@ interface navSliceTypes {
 
 const initialState: navSliceTypes = {
     currentPage: 1,
-    itemsPerPage: 2
+    itemsPerPage: 11
 };
 
 const navSlice = createSlice({

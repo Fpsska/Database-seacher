@@ -1,0 +1,17 @@
+@media screen and (max-width: 425px) {
+    .filter-form__wrapper {
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .filter-form__wrapper {
+        flex-direction: column;
+        :not(:last-child) {
+            margin: 0 0 15px 0;
+        }
+    }
+    .table-wrapper {
+        height: calc(100vh - 96px - 38px);
+    }
+}
