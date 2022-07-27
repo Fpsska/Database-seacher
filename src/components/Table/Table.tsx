@@ -12,8 +12,13 @@ import './table.scss';
 const Table: React.FC = () => {
 
     const { tableData, tableHeadData, filterConditionOpt, isDataLoading } = useAppSelector(state => state.tableSlice);
+    const { currentPage, itemsPerPage } = useAppSelector(state => state.navSlice);
 
     const [empty, setEmpty] = useState<boolean>(false);
+
+    const indexOfLastEl = currentPage * itemsPerPage;
+    const indexOfFirstEl = indexOfLastEl - itemsPerPage; 
+    const visibleEl = tableData.slice(indexOfFirstEl, indexOfLastEl);
 
     useEffect(() => { // display alternative content when tableData[] is empty
         tableData.length === 0 ? setEmpty(true) : setEmpty(false);
@@ -42,7 +47,7 @@ const Table: React.FC = () => {
                     <h1 className="message">no matches</h1>
                     :
                     <>
-                        {tableData.map((item: ItableData) => {
+                        {visibleEl.map((item: ItableData) => {
                             return (
                                 <TableTRtemplate
                                     key={item.id}

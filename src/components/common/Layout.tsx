@@ -6,8 +6,6 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import { switchLoadingStatus } from '../../app/slices/tableSlice';
 
-import Pagination from '../Pagination/Pagination';
-
 import Preloader from './Preloader/Preloader';
 
 const Layout: React.FC = () => {
@@ -29,7 +27,7 @@ const Layout: React.FC = () => {
             <main className="main">
                 <Outlet />
             </main>
-            <footer className="footer"><Pagination/></footer>
+            <footer className="footer"></footer>
         </>
     );
 };

@@ -1,9 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { InavTemplates } from '../../Types/navSliceTypes';
 
 interface navSliceTypes {
-    navTemplatesData: InavTemplates[]
+    navTemplatesData: InavTemplates[],
+    currentPage: number,
+    itemsPerPage: number
 }
 
 const initialState: navSliceTypes = {
@@ -33,7 +35,9 @@ const initialState: navSliceTypes = {
             text: '5',
             isActive: false
         }
-    ]
+    ],
+    currentPage: 1,
+    itemsPerPage: 2
 };
 
 const navSlice = createSlice({
@@ -44,7 +48,6 @@ const navSlice = createSlice({
 });
 
 export const {
-
 } = navSlice.actions;
 
 export default navSlice.reducer;
