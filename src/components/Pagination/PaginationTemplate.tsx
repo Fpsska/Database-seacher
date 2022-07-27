@@ -21,9 +21,13 @@ const PaginationTemplate: React.FC<propTypes> = (props) => {
         +text === currentPage ? setActive(true) : setActive(false);
     }, [text, currentPage]);
 
+    const handleLinkAction = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        dispatch(setCurrentPage(+text));
+    };
 
     return (
-        <li className={isActive ? 'nav__item active' : 'nav__item'} onClick={() => dispatch(setCurrentPage(+text))}>
+        <li className={isActive ? 'nav__item active' : 'nav__item'} onClick={(e) => handleLinkAction(e)}>
             <a className="nav__number" href="#" >{text}</a>
         </li>
     );

@@ -40,7 +40,7 @@ const Layout: React.FC = () => {
                         totalItems={tableData.length}
                         limitItems={itemsPerPage}
                     />
-                    }
+                }
             </footer>
         </>
     );
