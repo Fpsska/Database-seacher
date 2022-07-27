@@ -37,17 +37,21 @@ const initialState: navSliceTypes = {
         }
     ],
     currentPage: 1,
-    itemsPerPage: 2
+    itemsPerPage: 4
 };
 
 const navSlice = createSlice({
     name: 'navSlice',
     initialState,
     reducers: {
+        setCurrentPage(state, action: PayloadAction<number>) {
+            state.currentPage = action.payload;
+        }
     }
 });
 
 export const {
+    setCurrentPage
 } = navSlice.actions;
 
 export default navSlice.reducer;

@@ -17,8 +17,8 @@ const Table: React.FC = () => {
     const [empty, setEmpty] = useState<boolean>(false);
 
     const indexOfLastEl = currentPage * itemsPerPage;
-    const indexOfFirstEl = indexOfLastEl - itemsPerPage; 
-    const visibleEl = tableData.slice(indexOfFirstEl, indexOfLastEl);
+    const indexOfFirstEl = indexOfLastEl - itemsPerPage;
+    const visibleEl = tableData.slice(indexOfFirstEl, indexOfLastEl); // control of tableData[] items render 
 
     useEffect(() => { // display alternative content when tableData[] is empty
         tableData.length === 0 ? setEmpty(true) : setEmpty(false);
