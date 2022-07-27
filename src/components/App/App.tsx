@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Layout/>}>
+        <Route path="/WelbeX-Task" element={<Layout/>}>
           <Route index element={<MainPage />} />
         </Route>
       </Routes>
