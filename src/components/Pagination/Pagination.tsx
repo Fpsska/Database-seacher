@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { useAppDispatch } from '../../app/hooks';
+
 import { getConvertedArray } from '../../helpers/getConvertedArray';
 
 import PaginationTemplate from './PaginationTemplate';
@@ -12,18 +14,20 @@ interface propTypes {
     totalItems: number
 }
 
-const Pagination: React.FC<propTypes> = (props) => { 
+const Pagination: React.FC<propTypes> = (props) => {
 
-    const { totalItems, limitItems } = props;
+    const { currentPage, totalItems, limitItems } = props;
 
     const [pagesCount, setPagesCoun] = useState<number>(0);
     const [pagesArray, setPagesArray] = useState<any[]>([]);
+
+    const dispatch = useAppDispatch();
 
     useEffect(() => { //  define current pages count
         setPagesCoun(Math.ceil(totalItems / limitItems));
     }, [totalItems, limitItems]);
 
-    useEffect(() => { // get array from pages count for render
+    useEffect(() => { // get array from pagesCount for render
         setPagesArray(getConvertedArray(1, pagesCount));
     }, [pagesCount]);
 
@@ -35,6 +39,7 @@ const Pagination: React.FC<propTypes> = (props) => {
                         <PaginationTemplate
                             key={item}
                             text={item}
+                            currentPage={currentPage}
                         />
                     );
                 })}

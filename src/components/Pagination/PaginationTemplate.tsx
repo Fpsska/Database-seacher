@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useAppDispatch } from '../../app/hooks';
 
 import { setCurrentPage } from '../../app/slices/navSlice';
 
 interface propTypes {
-    text: string
+    text: string,
+    currentPage: number
 }
 
 const PaginationTemplate: React.FC<propTypes> = (props) => {
 
-    const { text } = props; // , isActive  {isActive ? 'nav__item active' : 'nav__item'}
+    const { text, currentPage } = props; // , isActive  
+
+    const [isActive, setActive] = useState<boolean>(false);
 
     const dispatch = useAppDispatch();
 
+    useEffect(() => { // define active class for nav__item el
+        +text === currentPage ? setActive(true) : setActive(false);
+    }, [text, currentPage]);
+
+
     return (
-        <li className="nav__item">
-            <a className="nav__number" href="#" onClick={() => dispatch(setCurrentPage(+text))}>{text}</a>
+        <li className={isActive ? 'nav__item active' : 'nav__item'} onClick={() => dispatch(setCurrentPage(+text))}>
+            <a className="nav__number" href="#" >{text}</a>
         </li>
     );
 };
