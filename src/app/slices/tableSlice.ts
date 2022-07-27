@@ -5,8 +5,8 @@ import { ItableData, ItableHead } from '../../Types/tableSliceTypes';
 import { getDublocateItems } from '../../helpers/getDublicateItems';
 
 interface tableSliceTypes {
-    tableData: any[],
-    filteredTableData: any[],
+    tableData: ItableData[],
+    filteredTableData: ItableData[],
     tableHeadData: ItableHead[],
     filterConditionOpt: string,
     filterColumnOpt: string

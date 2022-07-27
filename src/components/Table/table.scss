@@ -8,6 +8,11 @@ th {
     cursor: pointer;
 }
 
+.table__body .empty {
+    position: relative;
+    height: calc(100vh - 28px);
+}
+
 tbody tr {
     background-color: #ccc;
 }
