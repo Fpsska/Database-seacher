@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/WelbeX-Task/static/css/main.0733fb68.css",
+    "main.js": "/WelbeX-Task/static/js/main.ce8ccc3f.js",
+    "static/js/787.40d060be.chunk.js": "/WelbeX-Task/static/js/787.40d060be.chunk.js",
+    "index.html": "/WelbeX-Task/index.html",
+    "main.0733fb68.css.map": "/WelbeX-Task/static/css/main.0733fb68.css.map",
+    "main.ce8ccc3f.js.map": "/WelbeX-Task/static/js/main.ce8ccc3f.js.map",
+    "787.40d060be.chunk.js.map": "/WelbeX-Task/static/js/787.40d060be.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0733fb68.css",
+    "static/js/main.ce8ccc3f.js"
+  ]
+}
