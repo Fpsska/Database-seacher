@@ -39,6 +39,7 @@ const Layout: React.FC = () => {
                         currentPage={currentPage}
                         totalItems={tableData.length}
                         limitItems={itemsPerPage}
+                        isDataLoading={isDataLoading}
                     />
                 }
             </footer>

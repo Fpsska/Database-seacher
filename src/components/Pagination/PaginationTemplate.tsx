@@ -6,12 +6,13 @@ import { setCurrentPage } from '../../app/slices/navSlice';
 
 interface propTypes {
     text: string,
-    currentPage: number
+    currentPage: number,
+    isDataLoading: boolean
 }
 
 const PaginationTemplate: React.FC<propTypes> = (props) => {
 
-    const { text, currentPage } = props; // , isActive  
+    const { text, currentPage, isDataLoading } = props; // , isActive  
 
     const [isActive, setActive] = useState<boolean>(false);
 
@@ -27,7 +28,7 @@ const PaginationTemplate: React.FC<propTypes> = (props) => {
     };
 
     return (
-        <li className={isActive ? 'nav__item active' : 'nav__item'} onClick={(e) => handleLinkAction(e)}>
+        <li className={isActive ? 'nav__item active' : 'nav__item'} onClick={(e) => !isDataLoading && handleLinkAction(e)}>
             <a className="nav__number" href="#" >{text}</a>
         </li>
     );

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { useAppDispatch } from '../../app/hooks';
-
 import { getConvertedArray } from '../../helpers/getConvertedArray';
 
 import PaginationTemplate from './PaginationTemplate';
@@ -11,17 +9,16 @@ import './pagination.scss';
 interface propTypes {
     currentPage: number,
     limitItems: number,
-    totalItems: number
+    totalItems: number,
+    isDataLoading: boolean
 }
 
 const Pagination: React.FC<propTypes> = (props) => {
 
-    const { currentPage, totalItems, limitItems } = props;
+    const { currentPage, totalItems, limitItems, isDataLoading } = props;
 
     const [pagesCount, setPagesCoun] = useState<number>(0);
     const [pagesArray, setPagesArray] = useState<any[]>([]);
-
-    const dispatch = useAppDispatch();
 
     useEffect(() => { //  define current pages count
         setPagesCoun(Math.ceil(totalItems / limitItems));
@@ -40,6 +37,7 @@ const Pagination: React.FC<propTypes> = (props) => {
                             key={item}
                             text={item}
                             currentPage={currentPage}
+                            isDataLoading={isDataLoading}
                         />
                     );
                 })}
