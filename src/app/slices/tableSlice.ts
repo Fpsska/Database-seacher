@@ -1,4 +1,4 @@
-import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { ItableData, ItableHead } from '../../Types/tableSliceTypes';
 
@@ -9,7 +9,8 @@ interface tableSliceTypes {
     filteredTableData: ItableData[],
     tableHeadData: ItableHead[],
     filterConditionOpt: string,
-    filterColumnOpt: string
+    filterColumnOpt: string,
+    isDataLoading: boolean
 }
 
 const initialState: tableSliceTypes = {
@@ -194,7 +195,8 @@ const initialState: tableSliceTypes = {
         }
     ],
     filterConditionOpt: 'less',
-    filterColumnOpt: 'name'
+    filterColumnOpt: 'name',
+    isDataLoading: true
 };
 
 const tableSlice = createSlice({
@@ -275,6 +277,9 @@ const tableSlice = createSlice({
                     state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(String(item.distance)));
                     break;
             }
+        },
+        switchLoadingStatus(state, action: PayloadAction<boolean>) {
+            state.isDataLoading = action.payload;
         }
     }
 });
@@ -284,7 +289,8 @@ export const {
     setFilterColumnOpt,
     switchTHActiveStatus,
     sortData,
-    filterData
+    filterData,
+    switchLoadingStatus
 } = tableSlice.actions;
 
 export default tableSlice.reducer;
