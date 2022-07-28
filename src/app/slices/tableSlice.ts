@@ -8,7 +8,7 @@ export const fetchTableData = createAsyncThunk(
     'tableSlice/fetchTableData',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await fetch('http://localhost:8080/api/data');
+            const response = await fetch('http://localhost:8080/.netlify/functions/api/data');
 
             if (!response.ok) {
                 throw new Error('Error from response');
