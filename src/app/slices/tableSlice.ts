@@ -640,13 +640,13 @@ const tableSlice = createSlice({
 
             switch (name) {
                 case 'name':
-                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'gi').test(item.name));
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value.replace(/[^a-zA-Z\s]/g, ''), 'gi').test(item.name));
                     break;
                 case 'count':
-                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(String(item.count)));
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value.replace(/[^0-9]/g, ''), 'g').test(String(item.count)));
                     break;
                 case 'distance':
-                    state.tableData = state.filteredTableData.filter(item => RegExp(value, 'g').test(String(item.distance)));
+                    state.tableData = state.filteredTableData.filter(item => RegExp(value.replace(/[^0-9]/g, ''), 'g').test(String(item.distance)));
                     break;
             }
         },
