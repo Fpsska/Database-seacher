@@ -41,14 +41,17 @@ const Filter: React.FC = () => {
       case 'name':
         setInputValue(value.replace(/[^a-zA-Z\s]/g, ''));
         dispatch(filterData({ name: 'name', value: value.trim() }));
+        dispatch(switchTHActiveStatus({ id: 'name', status: true }));
         break;
       case 'count':
         setInputValue(value.replace(/[^0-9]/g, ''));
         dispatch(filterData({ name: 'count', value: value.trim() }));
+        dispatch(switchTHActiveStatus({ id: 'count', status: true }));
         break;
       case 'distance':
         setInputValue(value.replace(/[^0-9]/g, ''));
         dispatch(filterData({ name: 'distance', value: value.trim() }));
+        dispatch(switchTHActiveStatus({ id: 'distance', status: true }));
         break;
       default:
         return setInputValue('');
