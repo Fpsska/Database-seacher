@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
 
+###### _hosted by_
+- [vercel](https://vercel.com/)
+- [elephantSQL](https://www.elephantsql.com/)
+###### _powered by_
+- [css-spinner](https://loading.io/css/)
+
+
 ### `Watch demo` _[WelbeX-Task](https://Fpsska.github.io/WelbeX-Task)_
 
 ## Available Scripts
