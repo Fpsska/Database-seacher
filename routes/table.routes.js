@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-const router = Router();
+const router = new Router();
 const tableController = require('../controllers/table.controller');
 
 
