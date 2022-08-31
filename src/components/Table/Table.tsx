@@ -33,8 +33,9 @@ const Table: React.FC = () => {
                     {tableHeadData.map((item: ItableHead) => {
                         return (
                             <TableTHtemplate
+                                key={item.id}
                                 {...item}
-                                
+
                                 filterConditionOpt={filterConditionOpt}
                                 isDataLoading={isDataLoading}
                                 error={error}
@@ -55,6 +56,7 @@ const Table: React.FC = () => {
                                 {visibleEl.map((item: ItableData) => {
                                     return (
                                         <TableTRtemplate
+                                            key={item.id}
                                             {...item}
                                         />
                                     );

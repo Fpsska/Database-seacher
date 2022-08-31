@@ -38,8 +38,9 @@ const Pagination: React.FC<propTypes> = (props) => {
                 {pagesArray.map((item: any) => {
                     return (
                         <PaginationTemplate
-                            {...item}
-
+                            key={item}
+                            text={item}
+                            
                             currentPage={currentPage}
                             isDataLoading={isDataLoading}
                         />
