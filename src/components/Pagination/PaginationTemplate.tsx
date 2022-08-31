@@ -12,7 +12,7 @@ interface propTypes {
 
 const PaginationTemplate: React.FC<propTypes> = (props) => {
 
-    const { text, currentPage, isDataLoading } = props; // , isActive  
+    const { text, currentPage, isDataLoading } = props;
 
     const [isActive, setActive] = useState<boolean>(false);
 
