@@ -9,8 +9,6 @@ import TableTHtemplate from './TableTHtemplate';
 
 import './table.scss';
 
-// /. imports
-
 const Table: React.FC = () => {
 
     const { tableData, tableHeadData, filterConditionOpt, isDataLoading, error } = useAppSelector(state => state.tableSlice);
@@ -34,8 +32,8 @@ const Table: React.FC = () => {
                         return (
                             <TableTHtemplate
                                 key={item.id}
+                                
                                 {...item}
-
                                 filterConditionOpt={filterConditionOpt}
                                 isDataLoading={isDataLoading}
                                 error={error}
@@ -57,6 +55,7 @@ const Table: React.FC = () => {
                                     return (
                                         <TableTRtemplate
                                             key={item.id}
+
                                             {...item}
                                         />
                                     );

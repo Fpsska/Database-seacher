@@ -45,6 +45,11 @@ th {
     color: #fff;
 }
 
+.table__th {
+    position: sticky;
+    top: 0;
+}
+
 .table__th.active {
     color: green;
 }
