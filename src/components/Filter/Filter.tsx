@@ -19,7 +19,7 @@ const Filter: React.FC = () => {
 
   const [inputValue, setInputValue] = useState<string>('');
 
-  const defineCaseAction = useCaseAction();
+  const { defineCaseAction } = useCaseAction();
 
   const dispatch = useAppDispatch();
 

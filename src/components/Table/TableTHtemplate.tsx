@@ -19,7 +19,7 @@ const TableTHtemplate: React.FC<propTypes> = (props) => {
 
     const { id, text, isActive, filterConditionOpt, isDataLoading, error } = props;
 
-    const defineCaseAction = useCaseAction();
+    const { defineCaseAction } = useCaseAction();
 
     const dispatch = useAppDispatch();
 
