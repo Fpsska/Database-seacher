@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import { switchLoadingStatus } from '../../app/slices/tableSlice';
-import { fetchTableData } from '../../app/slices/tableSlice';
+import { fetchTableData } from '../../api/fetchTableData';
 
 import Filter from '../Filter/Filter';
 import Pagination from '../Pagination/Pagination';

@@ -13,6 +13,8 @@ import { useCaseAction } from '../../hooks/useCaseAction';
 
 import './filter.scss';
 
+// /. imports
+
 const Filter: React.FC = () => {
 
   const { filterConditionOpt, filterColumnOpt, isDataLoading, error } = useAppSelector(state => state.tableSlice);

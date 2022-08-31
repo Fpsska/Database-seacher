@@ -4,11 +4,15 @@ import { useAppDispatch } from '../../app/hooks';
 
 import { setCurrentPage } from '../../app/slices/navSlice';
 
+// /. imports
+
 interface propTypes {
     text: string,
     currentPage: number,
     isDataLoading: boolean
 }
+
+// /. interfaces
 
 const PaginationTemplate: React.FC<propTypes> = (props) => {
 

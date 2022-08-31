@@ -1,9 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+// /. imports
+
 interface navSliceTypes {
     currentPage: number,
     itemsPerPage: number
 }
+
+// /. interfaces
 
 const initialState: navSliceTypes = {
     currentPage: 1,

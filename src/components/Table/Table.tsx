@@ -9,6 +9,8 @@ import TableTHtemplate from './TableTHtemplate';
 
 import './table.scss';
 
+// /. imports
+
 const Table: React.FC = () => {
 
     const { tableData, tableHeadData, filterConditionOpt, isDataLoading, error } = useAppSelector(state => state.tableSlice);

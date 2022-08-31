@@ -6,6 +6,8 @@ import { switchTHActiveStatus, setFilterColumnOpt } from '../../app/slices/table
 
 import { useCaseAction } from '../../hooks/useCaseAction';
 
+// /. imports
+
 interface propTypes {
     id: string,
     text: string,
@@ -14,6 +16,8 @@ interface propTypes {
     isDataLoading: boolean,
     error: string
 }
+
+// /. interfaces
 
 const TableTHtemplate: React.FC<propTypes> = (props) => {
 

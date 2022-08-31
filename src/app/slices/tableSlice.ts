@@ -1,26 +1,12 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { ItableData, ItableHead } from '../../Types/tableSliceTypes';
 
+import { fetchTableData } from '../../api/fetchTableData';
+
 import { getDublocateItems } from '../../helpers/getDublicateItems';
 
-export const fetchTableData = createAsyncThunk(
-    'tableSlice/fetchTableData',
-    async (_, { rejectWithValue }) => {
-        try {
-            const response = await fetch('https://welbex-task-backend.vercel.app/api/data');
-
-            if (!response.ok) {
-                throw new Error('Error from response');
-            }
-
-            const data = await response.json();
-            return data;
-        } catch (err: any) {
-            return rejectWithValue(err.message); // send to case rejected.type of extreReducers 
-        }
-    }
-);
+// /. imports
 
 interface tableSliceTypes {
     tableData: ItableData[],
@@ -32,6 +18,8 @@ interface tableSliceTypes {
     status: string,
     error: string
 }
+
+// /. interfaces
 
 const initialState: tableSliceTypes = {
     tableData: [],

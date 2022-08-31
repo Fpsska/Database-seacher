@@ -6,12 +6,16 @@ import PaginationTemplate from './PaginationTemplate';
 
 import './pagination.scss';
 
+// /. imports
+
 interface propTypes {
     currentPage: number,
     limitItems: number,
     totalItems: number,
     isDataLoading: boolean
 }
+
+// /. interfaces
 
 const Pagination: React.FC<propTypes> = (props) => {
 

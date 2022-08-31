@@ -2,6 +2,8 @@ import React from 'react';
 
 import Table from '../Table/Table';
 
+// /. imports
+
 const MainPage: React.FC = () => {
     return (
         <div className="page">

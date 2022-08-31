@@ -1,11 +1,15 @@
 import React from 'react';
 
+// /. imports
+
 interface propTypes {
     date: string,
     name: string,
     count: number,
     distance: number
 }
+
+// /. interfaces
 
 const TableTRtemplate: React.FC<propTypes> = (props) => {
 
