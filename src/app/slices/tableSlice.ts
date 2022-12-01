@@ -91,20 +91,17 @@ const tableSlice = createSlice({
                         state.tableData = state.filteredTableData.sort((a, b) =>
                             a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
                         );
-                    }
-                    if (filterConditionOpt === 'less') {
+                    } else if (filterConditionOpt === 'less') {
                         // LESS (DSC) Z-A
                         state.tableData = state.filteredTableData.sort((a, b) =>
                             a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
                         );
-                    }
-                    if (filterConditionOpt === 'contain') {
+                    } else if (filterConditionOpt === 'contain') {
                         // show el, whose name field not empty
                         state.tableData = state.filteredTableData.filter(
                             item => item.name
                         );
-                    }
-                    if (filterConditionOpt === 'equal') {
+                    } else if (filterConditionOpt === 'equal') {
                         state.tableData = getDublicateItems(
                             state.filteredTableData,
                             'name'
@@ -117,25 +114,22 @@ const tableSlice = createSlice({
                         state.tableData = state.filteredTableData.sort(
                             (a, b) => a.count - b.count
                         );
-                    }
-                    if (filterConditionOpt === 'less') {
+                    } else if (filterConditionOpt === 'less') {
                         state.tableData = state.filteredTableData.sort(
                             (a, b) => b.count - a.count
                         );
-                    }
-                    if (filterConditionOpt === 'contain') {
+                    } else if (filterConditionOpt === 'contain') {
                         state.tableData = state.filteredTableData.filter(
                             item => item.count
                         );
-                    }
-                    if (filterConditionOpt === 'equal') {
+                    } else if (filterConditionOpt === 'equal') {
                         state.tableData = getDublicateItems(
                             state.filteredTableData,
                             'count'
                         );
-                        console.log(
-                            getDublicateItems(state.filteredTableData, 'count')
-                        );
+                        // console.log(
+                        //     getDublicateItems(state.filteredTableData, 'count')
+                        // );
                     }
                     break;
 
@@ -144,24 +138,23 @@ const tableSlice = createSlice({
                         state.tableData = state.filteredTableData.sort(
                             (a, b) => a.distance - b.distance
                         );
-                    }
-                    if (filterConditionOpt === 'less') {
+                    } else if (filterConditionOpt === 'less') {
                         state.tableData = state.filteredTableData.sort(
                             (a, b) => b.distance - a.distance
                         );
-                    }
-                    if (filterConditionOpt === 'contain') {
+                    } else if (filterConditionOpt === 'contain') {
                         state.tableData = state.filteredTableData.filter(
                             item => item.distance
                         );
-                    }
-                    if (filterConditionOpt === 'equal') {
+                    } else if (filterConditionOpt === 'equal') {
                         state.tableData = getDublicateItems(
                             state.filteredTableData,
                             'distance'
                         );
                     }
                     break;
+                default:
+                    return;
             }
         },
         filterData(
@@ -192,6 +185,8 @@ const tableSlice = createSlice({
                         )
                     );
                     break;
+                default:
+                    return;
             }
         },
         switchLoadingStatus(state, action: PayloadAction<boolean>) {
