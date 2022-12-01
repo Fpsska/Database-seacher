@@ -68,7 +68,8 @@ const tableSlice = createSlice({
             action: PayloadAction<{ id: string; status: boolean }>
         ) {
             const { id, status } = action.payload;
-            state.tableHeadData.forEach(item =>
+            // /. payload
+            state.tableHeadData.map(item =>
                 item.id === id
                     ? (item.isActive = status)
                     : (item.isActive = false)
@@ -82,19 +83,19 @@ const tableSlice = createSlice({
             }>
         ) {
             const { filterColumnOpt, filterConditionOpt } = action.payload;
-
+            // /. payload
             switch (filterColumnOpt) {
                 case 'name':
                     if (filterConditionOpt === 'more') {
-                        // MORE (ASC) 1..10
+                        // MORE (ASC) A-Z
                         state.tableData = state.filteredTableData.sort((a, b) =>
-                            a.name > b.name ? 1 : -1
+                            a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
                         );
                     }
                     if (filterConditionOpt === 'less') {
-                        // LESS (DSC) 10..1
+                        // LESS (DSC) Z-A
                         state.tableData = state.filteredTableData.sort((a, b) =>
-                            a.name < b.name ? 1 : -1
+                            a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
                         );
                     }
                     if (filterConditionOpt === 'contain') {
@@ -168,7 +169,7 @@ const tableSlice = createSlice({
             action: PayloadAction<{ name: string; value: string }>
         ) {
             const { name, value } = action.payload;
-
+            // /. payload
             switch (name) {
                 case 'name':
                     state.tableData = state.filteredTableData.filter(item =>
