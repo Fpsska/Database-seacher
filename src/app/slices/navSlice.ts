@@ -3,15 +3,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 // /. imports
 
 interface navSliceTypes {
-    currentPage: number,
-    itemsPerPage: number
+    currentPage: number;
+    itemsPerPage: number;
 }
 
 // /. interfaces
 
 const initialState: navSliceTypes = {
     currentPage: 1,
-    itemsPerPage: 10 // change the value for set count of visible items on page
+    itemsPerPage: 30 // change the value for set count of visible items on page
 };
 
 const navSlice = createSlice({
@@ -24,8 +24,6 @@ const navSlice = createSlice({
     }
 });
 
-export const {
-    setCurrentPage
-} = navSlice.actions;
+export const { setCurrentPage } = navSlice.actions;
 
 export default navSlice.reducer;

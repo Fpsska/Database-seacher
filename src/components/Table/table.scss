@@ -46,6 +46,7 @@ th {
 }
 
 .table__th {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
 }

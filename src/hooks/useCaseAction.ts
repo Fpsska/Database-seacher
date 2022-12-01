@@ -5,7 +5,6 @@ import { sortData } from '../app/slices/tableSlice';
 // /. imports
 
 export function useCaseAction() {
-
     const dispatch = useAppDispatch();
 
     const defineCaseAction = (id: string, filterConditionOpt: string): void => {
@@ -14,10 +13,14 @@ export function useCaseAction() {
                 dispatch(sortData({ filterColumnOpt: id, filterConditionOpt }));
                 break;
             default:
-                dispatch(sortData({ filterColumnOpt: 'name', filterConditionOpt: 'less' }));
+                dispatch(
+                    sortData({
+                        filterColumnOpt: 'name',
+                        filterConditionOpt: 'less'
+                    })
+                );
         }
     };
 
     return { defineCaseAction };
-
-};
+}

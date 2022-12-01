@@ -1,9 +1,15 @@
-export function getDublocateItems(array: any, filterProp: string): any[] {
+export function getDublicateItems(array: any, filterProp: string): any[] {
+    // console.log(array)
+    // console.log(filterProp)
 
-    const duplicateIDs = array.map((e: any) => e[filterProp])
-        .map((e: any, i: number, self: any[]) => self.indexOf(e) !== i && i)
+    const duplicateIDs = array
+        .map((el: any) => el[filterProp])
+        .map(
+            (el: any, idx: number, self: any[]) =>
+                self.indexOf(el) !== idx && idx
+        )
         .filter((obj: number) => array[obj])
-        .map((e: any) => array[e][filterProp]);
+        .map((el: any) => array[el][filterProp]);
 
     return array.filter((obj: any) => duplicateIDs.includes(obj[filterProp]));
 }

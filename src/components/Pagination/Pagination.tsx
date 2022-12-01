@@ -9,26 +9,27 @@ import './pagination.scss';
 // /. imports
 
 interface propTypes {
-    currentPage: number,
-    limitItems: number,
-    totalItems: number,
-    isDataLoading: boolean
+    currentPage: number;
+    limitItems: number;
+    totalItems: number;
+    isDataLoading: boolean;
 }
 
 // /. interfaces
 
-const Pagination: React.FC<propTypes> = (props) => {
-
+const Pagination: React.FC<propTypes> = props => {
     const { currentPage, totalItems, limitItems, isDataLoading } = props;
 
     const [pagesCount, setPagesCoun] = useState<number>(0);
     const [pagesArray, setPagesArray] = useState<any[]>([]);
 
-    useEffect(() => { //  define current pages count
+    useEffect(() => {
+        //  define current pages count
         setPagesCoun(Math.ceil(totalItems / limitItems));
     }, [totalItems, limitItems]);
 
-    useEffect(() => { // get array from pagesCount for render
+    useEffect(() => {
+        // get array from pagesCount for render
         setPagesArray(getConvertedArray(1, pagesCount));
     }, [pagesCount]);
 
@@ -40,7 +41,6 @@ const Pagination: React.FC<propTypes> = (props) => {
                         <PaginationTemplate
                             key={item}
                             text={item}
-                            
                             currentPage={currentPage}
                             isDataLoading={isDataLoading}
                         />

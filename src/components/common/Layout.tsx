@@ -13,9 +13,12 @@ import Pagination from '../Pagination/Pagination';
 import Preloader from './Preloader/Preloader';
 
 const Layout: React.FC = () => {
-
-    const { currentPage, itemsPerPage } = useAppSelector(state => state.navSlice);
-    const { isDataLoading, tableData} = useAppSelector(state => state.tableSlice);
+    const { currentPage, itemsPerPage } = useAppSelector(
+        state => state.navSlice
+    );
+    const { isDataLoading, tableData } = useAppSelector(
+        state => state.tableSlice
+    );
 
     const dispatch = useAppDispatch();
 
@@ -28,7 +31,11 @@ const Layout: React.FC = () => {
 
     return (
         <>
-            {isDataLoading && <div className="page-preloader"><Preloader /></div>}
+            {isDataLoading && (
+                <div className="page-preloader">
+                    <Preloader />
+                </div>
+            )}
             <header className="header">
                 <Filter />
             </header>
@@ -36,14 +43,14 @@ const Layout: React.FC = () => {
                 <Outlet />
             </main>
             <footer className="footer">
-                {tableData.length > 0 &&
+                {tableData.length > 0 && (
                     <Pagination
                         currentPage={currentPage}
                         totalItems={tableData.length}
                         limitItems={itemsPerPage}
                         isDataLoading={isDataLoading}
                     />
-                }
+                )}
             </footer>
         </>
     );
