@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, current } from '@reduxjs/toolkit';
 
 import { ItableData, ItableHead } from '../../Types/tableSliceTypes';
 
@@ -86,6 +86,7 @@ const tableSlice = createSlice({
             // /. payload
             switch (filterColumnOpt) {
                 case 'name':
+                    // console.log(current(state.tableData));
                     if (filterConditionOpt === 'more') {
                         // MORE (ASC) A-Z
                         state.tableData = state.filteredTableData.sort((a, b) =>
@@ -127,9 +128,6 @@ const tableSlice = createSlice({
                             state.filteredTableData,
                             'count'
                         );
-                        // console.log(
-                        //     getDublicateItems(state.filteredTableData, 'count')
-                        // );
                     }
                     break;
 
