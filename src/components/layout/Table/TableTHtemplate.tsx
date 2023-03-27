@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from 'app/hooks';
 
 import {
     switchTHActiveStatus,
     setFilterColumnOpt
-} from '../../app/slices/tableSlice';
+} from 'app/slices/tableSlice';
 
-import { useCaseAction } from '../../hooks/useCaseAction';
+import { useCaseAction } from 'hooks/useCaseAction';
 
 // /. imports
 

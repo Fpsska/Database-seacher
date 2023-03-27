@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from 'app/hooks';
 
-import { setCurrentPage } from '../../app/slices/navSlice';
+import { setCurrentPage } from 'app/slices/navSlice';
 
 // /. imports
 
@@ -26,7 +26,7 @@ const PaginationTemplate: React.FC<propTypes> = props => {
         +text === currentPage ? setActive(true) : setActive(false);
     }, [text, currentPage]);
 
-    const handleLinkAction = (e: React.SyntheticEvent) => {
+    const handleLinkAction = (e: React.SyntheticEvent): void => {
         e.preventDefault();
         dispatch(setCurrentPage(+text));
     };

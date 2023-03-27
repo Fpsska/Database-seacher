@@ -2,11 +2,11 @@ import React from 'react';
 
 import { Routes, Route } from 'react-router-dom';
 
-import Layout from '../common/Layout';
-import MainPage from '../pages/MainPage';
+import Layout from '../Layout';
+import MainPage from '../../../pages/MainPage';
 
-import '../../assets/_style.scss';
-import '../../assets/_media.scss';
+import 'assets/_style.scss';
+import 'assets/_media.scss';
 import './App.css';
 
 // /. imports

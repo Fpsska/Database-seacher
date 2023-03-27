@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
 
 import {
     setFilterConditionOpt,
     setFilterColumnOpt,
     switchTHActiveStatus,
     filterData
-} from '../../app/slices/tableSlice';
+} from 'app/slices/tableSlice';
 
-import { useCaseAction } from '../../hooks/useCaseAction';
+import { useCaseAction } from 'hooks/useCaseAction';
 
 import './filter.scss';
 

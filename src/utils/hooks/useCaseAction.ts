@@ -1,6 +1,6 @@
-import { sortData } from 'app/slices/tableSlice';
+import { useAppDispatch } from 'app/hooks';
 
-import { useAppDispatch } from '../app/hooks';
+import { sortData } from 'app/slices/tableSlice';
 
 // /. imports
 

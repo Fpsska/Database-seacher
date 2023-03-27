@@ -7,10 +7,11 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { switchLoadingStatus } from '../../app/slices/tableSlice';
 import { fetchTableData } from '../../api/fetchTableData';
 
-import Filter from '../Filter/Filter';
-import Pagination from '../Pagination/Pagination';
+import Pagination from '../ui/Pagination/Pagination';
 
-import Preloader from './Preloader/Preloader';
+import Preloader from '../ui/Preloader/Preloader';
+
+import Filter from './Filter/Filter';
 
 const Layout: React.FC = () => {
     const { currentPage, itemsPerPage } = useAppSelector(

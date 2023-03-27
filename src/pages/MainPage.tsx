@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Table from '../Table/Table';
+import Table from 'components/layout/Table/Table';
 
 // /. imports
 

@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction, current } from '@reduxjs/toolkit';
 
-import { ItableData, ItableHead } from '../../Types/tableSliceTypes';
+import { fetchTableData } from 'api/fetchTableData';
 
-import { fetchTableData } from '../../api/fetchTableData';
+import { getDublicateItems } from 'utils/helpers/getDublicateItems';
 
-import { getDublicateItems } from '../../helpers/getDublicateItems';
+import { ItableData, ItableHead } from 'types/tableSliceTypes';
 
 // /. imports
 

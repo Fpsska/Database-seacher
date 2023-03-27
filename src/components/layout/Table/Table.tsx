@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { useAppSelector } from '../../app/hooks';
+import { useAppSelector } from 'app/hooks';
 
-import { ItableData, ItableHead } from '../../Types/tableSliceTypes';
+import { ItableData, ItableHead } from 'types/tableSliceTypes';
 
 import TableTRtemplate from './TableTRtemplate';
 import TableTHtemplate from './TableTHtemplate';

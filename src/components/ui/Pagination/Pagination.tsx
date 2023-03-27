@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { getConvertedArray } from '../../helpers/getConvertedArray';
+import { getConvertedArray } from 'utils/helpers/getConvertedArray';
 
 import PaginationTemplate from './PaginationTemplate';
 

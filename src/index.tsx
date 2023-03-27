@@ -4,8 +4,10 @@ import { Provider } from 'react-redux';
 
 import { BrowserRouter } from 'react-router-dom';
 
-import { store } from './app/store';
-import App from './components/App/App';
+import App from 'components/layout/App/App';
+
+import { store } from 'app/store';
+
 import reportWebVitals from './reportWebVitals';
 
 // /. imports
