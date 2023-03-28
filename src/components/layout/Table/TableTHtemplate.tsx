@@ -7,7 +7,7 @@ import {
     setFilterColumnOpt
 } from 'app/slices/tableSlice';
 
-import { useCaseAction } from 'hooks/useCaseAction';
+import { useCaseAction } from 'utils/hooks/useCaseAction';
 
 // /. imports
 
@@ -17,7 +17,7 @@ interface propTypes {
     isActive: boolean;
     filterConditionOpt: string;
     isDataLoading: boolean;
-    error: string;
+    error: null | string;
 }
 
 // /. interfaces

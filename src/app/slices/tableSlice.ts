@@ -16,7 +16,7 @@ interface tableSliceTypes {
     filterColumnOpt: string;
     isDataLoading: boolean;
     status: string;
-    error: string;
+    error: null | string;
 }
 
 // /. interfaces
@@ -50,7 +50,7 @@ const initialState: tableSliceTypes = {
     filterColumnOpt: 'name',
     isDataLoading: true,
     status: '',
-    error: ''
+    error: null
 };
 
 const tableSlice = createSlice({
@@ -198,6 +198,7 @@ const tableSlice = createSlice({
     extraReducers: {
         [fetchTableData.pending.type]: state => {
             state.status = 'loading';
+            state.error = null;
         },
         [fetchTableData.fulfilled.type]: (
             state,

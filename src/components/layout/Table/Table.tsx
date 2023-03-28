@@ -4,6 +4,8 @@ import { useAppSelector } from 'app/hooks';
 
 import { ItableData, ItableHead } from 'types/tableSliceTypes';
 
+import { getVisibleItemsPerPage } from 'utils/helpers/getVisibleItemsPerPage';
+
 import TableTRtemplate from './TableTRtemplate';
 import TableTHtemplate from './TableTHtemplate';
 
@@ -22,15 +24,21 @@ const Table: React.FC = () => {
     );
 
     const [empty, setEmpty] = useState<boolean>(false);
-
-    const indexOfLastEl = currentPage * itemsPerPage;
-    const indexOfFirstEl = indexOfLastEl - itemsPerPage;
-    const visibleEl = filteredTableData.slice(indexOfFirstEl, indexOfLastEl); // control of tableData[] items render
+    const [visibleData, setVisibleData] = useState<any[]>([]);
 
     useEffect(() => {
         // display alternative content when tableData[] is empty
         filteredTableData.length === 0 ? setEmpty(true) : setEmpty(false);
     }, [filteredTableData]);
+
+    useEffect(() => {
+        const newData = getVisibleItemsPerPage(
+            currentPage,
+            itemsPerPage,
+            filteredTableData
+        );
+        setVisibleData(newData);
+    }, [currentPage, itemsPerPage, filteredTableData]);
 
     return (
         <table className="table">
@@ -56,7 +64,7 @@ const Table: React.FC = () => {
                     <h1 className="message">no matches</h1>
                 ) : (
                     <>
-                        {visibleEl.map((item: ItableData) => {
+                        {visibleData.map((item: ItableData) => {
                             return (
                                 <TableTRtemplate
                                     key={item.id}

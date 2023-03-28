@@ -9,7 +9,7 @@ import {
     filterData
 } from 'app/slices/tableSlice';
 
-import { useCaseAction } from 'hooks/useCaseAction';
+import { useCaseAction } from 'utils/hooks/useCaseAction';
 
 import './filter.scss';
 
