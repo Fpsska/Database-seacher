@@ -30,10 +30,11 @@ const TableTHtemplate: React.FC<propTypes> = props => {
 
     const dispatch = useAppDispatch();
 
+    const isTHclickAvaliable =
+        id !== 'date' && !isDataLoading && !error && !isActive;
+
     const onTableHeadClick = (): void => {
-        const validCondition =
-            id !== 'date' && !isDataLoading && !error && !isActive;
-        if (validCondition) {
+        if (isTHclickAvaliable) {
             dispatch(switchTHActiveStatus({ id, status: true }));
             dispatch(setFilterColumnOpt(id));
             defineCaseAction(id, filterConditionOpt);
@@ -43,7 +44,7 @@ const TableTHtemplate: React.FC<propTypes> = props => {
     return (
         <th
             className={isActive ? 'table__th active' : 'table__th'}
-            onClick={onTableHeadClick}
+            onClick={() => isTHclickAvaliable && onTableHeadClick()}
         >
             {text}
         </th>

@@ -75,6 +75,9 @@ const tableSlice = createSlice({
                     : (item.isActive = false)
             );
         },
+        switchLoadingStatus(state, action: PayloadAction<boolean>) {
+            state.isDataLoading = action.payload;
+        },
         sortData(
             state,
             action: PayloadAction<{
@@ -89,22 +92,26 @@ const tableSlice = createSlice({
                     // console.log(current(state.tableData));
                     if (filterConditionOpt === 'more') {
                         // MORE (ASC) A-Z
-                        state.tableData = state.filteredTableData.sort((a, b) =>
+                        state.filteredTableData = [
+                            ...state.filteredTableData
+                        ].sort((a, b) =>
                             a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
                         );
                     } else if (filterConditionOpt === 'less') {
                         // LESS (DSC) Z-A
-                        state.tableData = state.filteredTableData.sort((a, b) =>
+                        state.filteredTableData = [
+                            ...state.filteredTableData
+                        ].sort((a, b) =>
                             a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
                         );
                     } else if (filterConditionOpt === 'contain') {
                         // show el, whose name field not empty
-                        state.tableData = state.filteredTableData.filter(
+                        state.filteredTableData = state.tableData.filter(
                             item => item.name
                         );
                     } else if (filterConditionOpt === 'equal') {
-                        state.tableData = getDublicateItems(
-                            state.filteredTableData,
+                        state.filteredTableData = getDublicateItems(
+                            state.tableData,
                             'name'
                         );
                     }
@@ -112,20 +119,20 @@ const tableSlice = createSlice({
 
                 case 'count':
                     if (filterConditionOpt === 'more') {
-                        state.tableData = state.filteredTableData.sort(
-                            (a, b) => a.count - b.count
-                        );
+                        state.filteredTableData = [
+                            ...state.filteredTableData
+                        ].sort((a, b) => a.count - b.count);
                     } else if (filterConditionOpt === 'less') {
-                        state.tableData = state.filteredTableData.sort(
-                            (a, b) => b.count - a.count
-                        );
+                        state.filteredTableData = [
+                            ...state.filteredTableData
+                        ].sort((a, b) => b.count - a.count);
                     } else if (filterConditionOpt === 'contain') {
-                        state.tableData = state.filteredTableData.filter(
+                        state.filteredTableData = state.tableData.filter(
                             item => item.count
                         );
                     } else if (filterConditionOpt === 'equal') {
-                        state.tableData = getDublicateItems(
-                            state.filteredTableData,
+                        state.filteredTableData = getDublicateItems(
+                            state.tableData,
                             'count'
                         );
                     }
@@ -133,20 +140,20 @@ const tableSlice = createSlice({
 
                 case 'distance':
                     if (filterConditionOpt === 'more') {
-                        state.tableData = state.filteredTableData.sort(
-                            (a, b) => a.distance - b.distance
-                        );
+                        state.filteredTableData = [
+                            ...state.filteredTableData
+                        ].sort((a, b) => a.distance - b.distance);
                     } else if (filterConditionOpt === 'less') {
-                        state.tableData = state.filteredTableData.sort(
-                            (a, b) => b.distance - a.distance
-                        );
+                        state.filteredTableData = [
+                            ...state.filteredTableData
+                        ].sort((a, b) => b.distance - a.distance);
                     } else if (filterConditionOpt === 'contain') {
-                        state.tableData = state.filteredTableData.filter(
+                        state.filteredTableData = state.tableData.filter(
                             item => item.distance
                         );
                     } else if (filterConditionOpt === 'equal') {
-                        state.tableData = getDublicateItems(
-                            state.filteredTableData,
+                        state.filteredTableData = getDublicateItems(
+                            state.tableData,
                             'distance'
                         );
                     }
@@ -163,21 +170,21 @@ const tableSlice = createSlice({
             // /. payload
             switch (name) {
                 case 'name':
-                    state.tableData = state.filteredTableData.filter(item =>
+                    state.filteredTableData = state.tableData.filter(item =>
                         RegExp(value.replace(/[^a-zA-Z\s]/g, ''), 'gi').test(
                             item.name
                         )
                     );
                     break;
                 case 'count':
-                    state.tableData = state.filteredTableData.filter(item =>
+                    state.filteredTableData = state.tableData.filter(item =>
                         RegExp(value.replace(/[^0-9]/g, ''), 'g').test(
                             String(item.count)
                         )
                     );
                     break;
                 case 'distance':
-                    state.tableData = state.filteredTableData.filter(item =>
+                    state.filteredTableData = state.tableData.filter(item =>
                         RegExp(value.replace(/[^0-9]/g, ''), 'g').test(
                             String(item.distance)
                         )
@@ -186,9 +193,6 @@ const tableSlice = createSlice({
                 default:
                     return;
             }
-        },
-        switchLoadingStatus(state, action: PayloadAction<boolean>) {
-            state.isDataLoading = action.payload;
         }
     },
     extraReducers: {

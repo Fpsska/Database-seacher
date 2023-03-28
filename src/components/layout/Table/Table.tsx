@@ -11,7 +11,7 @@ import './table.scss';
 
 const Table: React.FC = () => {
     const {
-        tableData,
+        filteredTableData,
         tableHeadData,
         filterConditionOpt,
         isDataLoading,
@@ -25,12 +25,12 @@ const Table: React.FC = () => {
 
     const indexOfLastEl = currentPage * itemsPerPage;
     const indexOfFirstEl = indexOfLastEl - itemsPerPage;
-    const visibleEl = tableData.slice(indexOfFirstEl, indexOfLastEl); // control of tableData[] items render
+    const visibleEl = filteredTableData.slice(indexOfFirstEl, indexOfLastEl); // control of tableData[] items render
 
     useEffect(() => {
         // display alternative content when tableData[] is empty
-        tableData.length === 0 ? setEmpty(true) : setEmpty(false);
-    }, [tableData]);
+        filteredTableData.length === 0 ? setEmpty(true) : setEmpty(false);
+    }, [filteredTableData]);
 
     return (
         <table className="table">
