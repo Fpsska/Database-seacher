@@ -1,9 +1,9 @@
 {
-  "name": "welbex-task",
+  "name": "database-seacher",
   "author": "Fpsska",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Fpsska.github.io/WelbeX-Task",
+  "homepage": "https://Fpsska.github.io/Database-seacher",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.4",
