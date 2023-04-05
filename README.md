@@ -9,7 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [css-spinner](https://loading.io/css/)
 
 
-### `Watch demo` _[WelbeX-Task](https://Fpsska.github.io/WelbeX-Task)_
+### `Watch demo` _[Database-seacher](https://Fpsska.github.io/Database-seacher)_
 
 ## Available Scripts
 
